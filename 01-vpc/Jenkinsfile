@@ -19,7 +19,7 @@ pipeline {
     }
 
     stages {
-        stage('Init') {
+        stage('Initiating Terraform') {
             steps {
                 sh """
                     cd 01-vpc
@@ -27,7 +27,7 @@ pipeline {
                 """
             }
         }
-        stage('Plan') {
+        stage('Planning Terraform') {
             steps {
                 sh """
                     cd 01-vpc
@@ -35,9 +35,9 @@ pipeline {
                 """
             }    
         }
-        stage('Deploy') {
+        stage('Apply terraform') {
             when {
-                expresssion {
+                expression {
                     ${params.ACTION} == 'apply' 
                 }
             }
@@ -55,20 +55,22 @@ pipeline {
                     terraform apply -auto-approve
                 """
             }
+        }
+        stage('Destroying Terraform') {
             when {
-                expresssion {
+                expression {
                     ${params.ACTION} == 'destroy' 
                 }
             }
-             steps {
+            steps {
                 sh """
                     cd 01-vpc
                     terraform destroy -auto-approve
                 """
             }
         }
-        
     }
+
     //POST Stages
     post { 
         always { 
