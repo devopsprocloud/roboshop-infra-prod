@@ -1,0 +1,63 @@
+pipeline {
+    agent {
+        node {
+            label 'AGENT-1'
+        }
+    }
+
+    environment {
+        GREETING = 'Hello Jenkins'
+    }
+
+    options {
+        timeout(time: 1, unit: 'HOURS')
+        disableConcurrentBuilds()
+    }
+
+    stages {
+        stage('Init') {
+            steps {
+                sh """
+                    cd 01-vpc
+                    terraform init -reconfigure
+                """
+            }
+        }
+        stage('Plan') {
+            steps {
+                esh """
+                    cd 01-vpc
+                    terraform init plan
+                """
+            }    
+        }
+        stage('Deploy') {
+            input {
+                message "Should we apply?"
+                ok "Yes, we should."
+                // submitter "alice,bob"
+                // parameters {
+                //     string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                // }
+            }
+            steps {
+                sh """
+                    terraform apply -auto-approve
+                """
+            }
+        }
+        
+    }
+    //POST Stages
+    post { 
+        always { 
+            echo 'Pipeline is executed'
+        }
+        failure {
+            echo 'The pipeline is Failed, Please send some alerts'
+        }
+        success {
+            echo 'Pipeline executed successfully'
+        }
+    }
+}
