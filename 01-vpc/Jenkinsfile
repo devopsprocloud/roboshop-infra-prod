@@ -27,7 +27,7 @@ pipeline {
             steps {
                 esh """
                     cd 01-vpc
-                    terraform init plan
+                    terraform plan
                 """
             }    
         }
