@@ -38,7 +38,7 @@ pipeline {
         stage('Apply terraform') {
             when {
                 expression {
-                    ${params.ACTION} == 'apply' 
+                    params.ACTION == 'apply' 
                 }
             }
             // input {
@@ -59,7 +59,7 @@ pipeline {
         stage('Destroying Terraform') {
             when {
                 expression {
-                    ${params.ACTION} == 'destroy' 
+                    params.ACTION == 'destroy' 
                 }
             }
             steps {
