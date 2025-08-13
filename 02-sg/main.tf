@@ -1,5 +1,5 @@
 module "openvpn_sg" {
-  source = "../../terraform-sg-module"
+  source = "git::https://github.com/devopsprocloud/terraform-sg-module.git?ref=main"
   sg_name = "openvpn"
   sg_description = "Securiy Group for OpenVPN"
   vpc_id = data.aws_vpc.default_vpc.id
@@ -9,7 +9,7 @@ module "openvpn_sg" {
 }
 
 module "mongodb_sg" {
-  source = "../../terraform-sg-module"
+  source = "git::https://github.com/devopsprocloud/terraform-sg-module.git?ref=main"
   sg_name = "mongodb"
   sg_description = "Securiy Group for MongoDB"
   vpc_id = data.aws_ssm_parameter.vpc_id.value
@@ -19,7 +19,7 @@ module "mongodb_sg" {
 }
 
 module "redis_sg" {
-  source = "../../terraform-sg-module"
+  source = "git::https://github.com/devopsprocloud/terraform-sg-module.git?ref=main"
   sg_name = "redis"
   sg_description = "Securiy Group for Redis"
   vpc_id = data.aws_ssm_parameter.vpc_id.value
@@ -29,7 +29,7 @@ module "redis_sg" {
 }
 
 module "mysql_sg" {
-  source = "../../terraform-sg-module"
+  source = "git::https://github.com/devopsprocloud/terraform-sg-module.git?ref=main"
   sg_name = "mysql"
   sg_description = "Securiy Group for MySQL"
   vpc_id = data.aws_ssm_parameter.vpc_id.value
@@ -39,7 +39,7 @@ module "mysql_sg" {
 }
 
 module "rabbitmq_sg" {
-  source = "../../terraform-sg-module"
+  source = "git::https://github.com/devopsprocloud/terraform-sg-module.git?ref=main"
   sg_name = "rabbitmq"
   sg_description = "Securiy Group for RabbitMQ"
   vpc_id = data.aws_ssm_parameter.vpc_id.value
@@ -49,7 +49,7 @@ module "rabbitmq_sg" {
 }
 
 module "catalogue_sg" {
-  source = "../../terraform-sg-module"
+  source = "git::https://github.com/devopsprocloud/terraform-sg-module.git?ref=main"
   sg_name = "catalogue"
   sg_description = "Securiy Group for Catalogue"
   vpc_id = data.aws_ssm_parameter.vpc_id.value
@@ -59,7 +59,7 @@ module "catalogue_sg" {
 }
 
 module "user_sg" {
-  source = "../../terraform-sg-module"
+  source = "git::https://github.com/devopsprocloud/terraform-sg-module.git?ref=main"
   sg_name = "user"
   sg_description = "Securiy Group for User"
   vpc_id = data.aws_ssm_parameter.vpc_id.value
@@ -69,7 +69,7 @@ module "user_sg" {
 }
 
 module "cart_sg" {
-  source = "../../terraform-sg-module"
+  source = "git::https://github.com/devopsprocloud/terraform-sg-module.git?ref=main"
   sg_name = "cart"
   sg_description = "Securiy Group for Cart"
   vpc_id = data.aws_ssm_parameter.vpc_id.value
@@ -79,7 +79,7 @@ module "cart_sg" {
 }
 
 module "shipping_sg" {
-  source = "../../terraform-sg-module"
+  source = "git::https://github.com/devopsprocloud/terraform-sg-module.git?ref=main"
   sg_name = "shipping"
   sg_description = "Securiy Group for Shipping"
   vpc_id = data.aws_ssm_parameter.vpc_id.value
@@ -89,7 +89,7 @@ module "shipping_sg" {
 }
 
 module "payment_sg" {
-  source = "../../terraform-sg-module"
+  source = "git::https://github.com/devopsprocloud/terraform-sg-module.git?ref=main"
   sg_name = "payment"
   sg_description = "Securiy Group for Payment"
   vpc_id = data.aws_ssm_parameter.vpc_id.value
@@ -99,7 +99,7 @@ module "payment_sg" {
 }
 
 module "web_sg" {
-  source = "../../terraform-sg-module"
+  source = "git::https://github.com/devopsprocloud/terraform-sg-module.git?ref=main"
   sg_name = "web"
   sg_description = "Securiy Group for Web"
   vpc_id = data.aws_ssm_parameter.vpc_id.value
@@ -109,7 +109,7 @@ module "web_sg" {
 }
 
 module "app_alb_sg" {
-  source = "../../terraform-sg-module"
+  source = "git::https://github.com/devopsprocloud/terraform-sg-module.git?ref=main"
   sg_name = "app-alb"
   sg_description = "Securiy Group for APP ALB"
   vpc_id = data.aws_ssm_parameter.vpc_id.value
@@ -119,7 +119,7 @@ module "app_alb_sg" {
 }
 
 module "web_alb_sg" {
-  source = "../../terraform-sg-module"
+  source = "git::https://github.com/devopsprocloud/terraform-sg-module.git?ref=main"
   sg_name = "web-alb"
   sg_description = "Securiy Group for WEB ALB"
   vpc_id = data.aws_ssm_parameter.vpc_id.value
