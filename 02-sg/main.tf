@@ -1,6 +1,6 @@
 module "openvpn_sg" {
   source = "git::https://github.com/devopsprocloud/terraform-sg-module.git?ref=main"
-  sg_name = "openvpn"
+  sg_name = "openvpn-prod"
   sg_description = "Securiy Group for OpenVPN"
   vpc_id = data.aws_vpc.default_vpc.id
   common_tags = var.common_tags
