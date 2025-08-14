@@ -7,10 +7,10 @@ terraform {
   }
 
   backend "s3"{
-  bucket = "devopsprocloud-remote-state-dev"
+  bucket = "prodopsprocloud-remote-state-prod"
   key = "roboshop-infra-sg"
   region = "us-east-1"
-  dynamodb_table = "devopsprocloud-remote-state-lock-dev"
+  dynamodb_table = "prodopsprocloud-remote-state-lock-prod"
 }
 }
 

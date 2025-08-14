@@ -39,7 +39,7 @@ resource "null_resource" "mongodb" {
     # Bootstrap script called with private_ip of each node in the cluster
     inline = [
       "chmod +x /tmp/bootstrap.sh",
-      "sudo sh /tmp/bootstrap.sh mongodb dev" # We are parsing the variables as $1 (mongodb) and $2 (dev) to bootstrap script
+      "sudo sh /tmp/bootstrap.sh mongodb ${var.environment}" # We are parsing the variables as $1 (mongodb) and $2 (dev) to bootstrap script
     ]
   }
 }
@@ -85,7 +85,7 @@ resource "null_resource" "redis" {
     # Bootstrap script called with private_ip of each node in the cluster
     inline = [
       "chmod +x /tmp/bootstrap.sh",
-      "sudo sh /tmp/bootstrap.sh redis dev" # We are parsing the variables as $1 (mongodb) and $2 (dev) to bootstrap script
+      "sudo sh /tmp/bootstrap.sh redis ${var.environment}" # We are parsing the variables as $1 (mongodb) and $2 (dev) to bootstrap script
     ]
   }
 }
@@ -132,7 +132,7 @@ resource "null_resource" "mysql" {
     # Bootstrap script called with private_ip of each node in the cluster
     inline = [
       "chmod +x /tmp/bootstrap.sh",
-      "sudo sh /tmp/bootstrap.sh mysql dev" # We are parsing the variables as $1 (mongodb) and $2 (dev) to bootstrap script
+      "sudo sh /tmp/bootstrap.sh mysql ${var.environment}" # We are parsing the variables as $1 (mongodb) and $2 (dev) to bootstrap script
     ]
   }
 }
@@ -179,7 +179,7 @@ resource "null_resource" "rabbitmq" {
     # Bootstrap script called with private_ip of each node in the cluster
     inline = [
       "chmod +x /tmp/bootstrap.sh",
-      "sudo sh /tmp/bootstrap.sh rabbitmq dev" # We are parsing the variables as $1 (mongodb) and $2 (dev) to bootstrap script
+      "sudo sh /tmp/bootstrap.sh rabbitmq ${var.environment}" # We are parsing the variables as $1 (mongodb) and $2 (dev) to bootstrap script
     ]
   }
 }
@@ -191,25 +191,25 @@ module "records" {
 
   records = [
     {
-      name    = "mongodb-dev"
+      name    = "mongodb-${var.environment}"
       type    = "A"
       ttl     = 1
       records = ["${module.mongodb.private_ip}"]
     },
     {
-      name    = "redis-dev"
+      name    = "redis-${var.environment}"
       type    = "A"
       ttl     = 1
       records = ["${module.redis.private_ip}"]
     },
     {
-      name    = "mysql-dev"
+      name    = "mysql-${var.environment}"
       type    = "A"
       ttl     = 1
       records = ["${module.mysql.private_ip}"]
     },
     {
-      name    = "rabbitmq-dev"
+      name    = "rabbitmq-${var.environment}"
       type    = "A"
       ttl     = 1
       records = ["${module.rabbitmq.private_ip}"]
