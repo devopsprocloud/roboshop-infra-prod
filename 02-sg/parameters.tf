@@ -1,8 +1,8 @@
 
-resource "aws_ssm_parameter" "openvpn_sg_prod_id" {
-  name  = "/${var.project_name}/${var.environment}/openvpn_sg_prod_id"
+resource "aws_ssm_parameter" "openvpn_sg_id" {
+  name  = "/${var.project_name}/${var.environment}/openvpn_sg_id"
   type  = "String"
-  value = module.openvpn_sg_prod.sg_id
+  value = module.openvpn_sg.sg_id
 }
 
 resource "aws_ssm_parameter" "mongodb_sg_id" {
