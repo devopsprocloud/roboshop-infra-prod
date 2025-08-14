@@ -21,15 +21,15 @@ pipeline {
                 """
             }
         }
-    //     stage('SG') {
-    //         steps {
-    //             sh """
-    //                 cd 02-sg
-    //                 terraform init -reconfigure
-    //                 terraform apply -auto-approve
-    //             """
-    //         }
-    //     }
+        stage('SG') {
+            steps {
+                sh """
+                    cd 02-sg
+                    terraform init -reconfigure
+                    terraform apply -auto-approve
+                """
+            }
+        }
     //     stage('OpenVPN') {
     //         steps {
     //             sh """
