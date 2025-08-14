@@ -4,11 +4,11 @@ data "aws_ami" "rhel-9"{
 
     filter {
         name = "name"
-        values = ["RHEL-9-${var.environment}Ops-Practice"]
+        values = ["RHEL-9-DevOps-Practice"]
     }
 
     filter {
-        name = "root-${var.environment}ice-type"
+        name = "root-device-type"
         values = ["ebs"]
     }   
 
