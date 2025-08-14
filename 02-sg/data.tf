@@ -11,3 +11,7 @@ data "aws_ssm_parameter" "vpc_id" {
 data "aws_vpc" "default_vpc" {
   default = true
 }
+
+output "vpc_id" {
+  value = aws_ssm_parameter.vpc_id
+}
