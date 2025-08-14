@@ -17,7 +17,7 @@ variable "common_tags" {
   type = map 
   default = {
     Project = "roboshop"
-    Environment = "dev"
+    Environment = "prod"
     Terraform = "true"
   }
 }
