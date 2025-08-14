@@ -1,6 +1,6 @@
-module "openvpn_sg" {
+module "openvpn_sg_prod" {
   source = "git::https://github.com/devopsprocloud/terraform-sg-module.git?ref=main"
-  sg_name = "openvpn"
+  sg_name = "openvpn-prod"
   sg_description = "Securiy Group for OpenVPN"
   vpc_id = data.aws_vpc.default_vpc.id
   common_tags = var.common_tags
@@ -131,7 +131,7 @@ module "web_alb_sg" {
 # Accept all connections in OPENVPN
 #----------------------------------------------------------------------------
 resource "aws_security_group_rule" "openvpn_home" {
-  security_group_id = module.openvpn_sg.sg_id
+  security_group_id = module.openvpn_sg_prod.sg_id
   type              = "ingress"
   from_port         = 0
   to_port           = 65535
@@ -148,7 +148,7 @@ resource "aws_security_group_rule" "mongodb_openvpn" {
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"  
-  source_security_group_id = module.openvpn_sg.sg_id
+  source_security_group_id = module.openvpn_sg_prod.sg_id
 }
 
 resource "aws_security_group_rule" "mongodb_catalogue" {
@@ -178,7 +178,7 @@ resource "aws_security_group_rule" "redis_openvpn" {
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"  
-  source_security_group_id = module.openvpn_sg.sg_id
+  source_security_group_id = module.openvpn_sg_prod.sg_id
 }
 
 resource "aws_security_group_rule" "redis_user" {
@@ -208,7 +208,7 @@ resource "aws_security_group_rule" "mysql_openvpn" {
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"  
-  source_security_group_id = module.openvpn_sg.sg_id
+  source_security_group_id = module.openvpn_sg_prod.sg_id
 }
 
 resource "aws_security_group_rule" "mysql_shipping" {
@@ -228,7 +228,7 @@ resource "aws_security_group_rule" "rabbitmq_openvpn" {
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"  
-  source_security_group_id = module.openvpn_sg.sg_id
+  source_security_group_id = module.openvpn_sg_prod.sg_id
 }
 
 resource "aws_security_group_rule" "rabbitmq_payment" {
@@ -249,7 +249,7 @@ resource "aws_security_group_rule" "catalogue_openvpn" {
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"  
-  source_security_group_id = module.openvpn_sg.sg_id
+  source_security_group_id = module.openvpn_sg_prod.sg_id
 }
 
 resource "aws_security_group_rule" "user_openvpn" {
@@ -258,7 +258,7 @@ resource "aws_security_group_rule" "user_openvpn" {
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"  
-  source_security_group_id = module.openvpn_sg.sg_id
+  source_security_group_id = module.openvpn_sg_prod.sg_id
 }
 
 
@@ -268,7 +268,7 @@ resource "aws_security_group_rule" "cart_openvpn" {
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"  
-  source_security_group_id = module.openvpn_sg.sg_id
+  source_security_group_id = module.openvpn_sg_prod.sg_id
 }
 
 
@@ -296,7 +296,7 @@ resource "aws_security_group_rule" "shipping_openvpn" {
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"  
-  source_security_group_id = module.openvpn_sg.sg_id
+  source_security_group_id = module.openvpn_sg_prod.sg_id
 }
 
 
@@ -306,7 +306,7 @@ resource "aws_security_group_rule" "payment_openvpn" {
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"  
-  source_security_group_id = module.openvpn_sg.sg_id
+  source_security_group_id = module.openvpn_sg_prod.sg_id
 }
 
 #------------------------------------------------------------------
@@ -318,7 +318,7 @@ resource "aws_security_group_rule" "app_alb_openvpn" {
   from_port         = 80
   to_port           = 80
   protocol          = "tcp"  
-  source_security_group_id = module.openvpn_sg.sg_id
+  source_security_group_id = module.openvpn_sg_prod.sg_id
 }
 
 resource "aws_security_group_rule" "app_alb_web" {
@@ -444,7 +444,7 @@ resource "aws_security_group_rule" "web_vpn" {
   from_port                = 22
   to_port                  = 22
   protocol                 = "tcp"
-  source_security_group_id = module.openvpn_sg.sg_id
+  source_security_group_id = module.openvpn_sg_prod.sg_id
 }
 
 resource "aws_security_group_rule" "web_internet" {
